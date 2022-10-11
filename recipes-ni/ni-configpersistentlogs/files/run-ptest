@@ -1,0 +1,4 @@
+#!/bin/sh
+
+./persistent_logs_test.sh
+

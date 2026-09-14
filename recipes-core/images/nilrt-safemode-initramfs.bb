@@ -85,5 +85,9 @@ addtask image_build_test before do_rootfs
 
 IMAGE_FSTYPES = "cpio.xz"
 IMAGE_NAME_SUFFIX = ""
-XZ_COMPRESSION_LEVEL = "-e -9"
+# NOTE: xz compression level 6 requires an 8MB dictionary size in RAM during
+# decompression. Level 9 requires a 64MB dictionary. On targets with 256GB RAM
+# level 9 has been confirmed to trigger OOM panics during early boot. Level 6
+# seems like a good trade-off between compression and RAM usage.
+XZ_COMPRESSION_LEVEL = "-e -6"
 XZ_INTEGRITY_CHECK = "crc32"

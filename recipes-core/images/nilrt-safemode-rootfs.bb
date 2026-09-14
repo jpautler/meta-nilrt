@@ -23,6 +23,10 @@ IMAGE_INSTALL:append:x64 = "\
 	nilrt-grub-safemode \
 "
 
+IMAGE_INSTALL:append:xilinx-zynq = "\
+	linux-nilrt-arm-safemode-fitimage \
+"
+
 RAMDISK_IMAGE = "nilrt-safemode-initramfs"
 do_rootfs[depends] += "${RAMDISK_IMAGE}:do_image_complete"
 
@@ -85,6 +89,6 @@ ensure_expected_files() {
 	done
 }
 
-IMAGE_PREPROCESS_COMMAND += " bootimg_fixup; ensure_expected_files; "
+IMAGE_PREPROCESS_COMMAND:append:x64 = " bootimg_fixup; ensure_expected_files; "
 
 inherit image

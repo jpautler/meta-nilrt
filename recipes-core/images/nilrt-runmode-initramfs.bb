@@ -9,6 +9,9 @@ PV = "${DISTRO_VERSION}"
 
 require includes/nilrt-core-image.inc
 
+# Package preinstall and postinstall scripts use the native shadow utilities
+# while the initramfs rootfs is assembled.
+do_rootfs[depends] += "shadow-native:do_populate_sysroot"
 
 # ==============================================================================
 # SOFTWARE DISTRIBUTION

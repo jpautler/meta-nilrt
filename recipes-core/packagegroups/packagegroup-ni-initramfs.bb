@@ -23,6 +23,7 @@ RDEPENDS:${PN} += "\
 	ni-systemreplication \
 	parted \
 	procps \
+	shadow \
 	sed \
 	sysvinit \
 	tar \
